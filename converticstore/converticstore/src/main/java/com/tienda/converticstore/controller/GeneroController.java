@@ -1,4 +1,4 @@
 package com.tienda.converticstore.controller;
 
-public class CiudadRest {
+public class GeneroController {
 }

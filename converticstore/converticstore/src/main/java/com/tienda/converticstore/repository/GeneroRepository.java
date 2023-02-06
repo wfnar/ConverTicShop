@@ -1,8 +1,7 @@
 package com.tienda.converticstore.repository;
 
 import com.tienda.converticstore.entities.Generos;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-import org.springframework.data.repository.CrudRepository;
-
-public interface GeneroRepository extends CrudRepository<Generos, Integer> {
+public interface GeneroRepository extends JpaRepository<Generos, Integer> {
 }

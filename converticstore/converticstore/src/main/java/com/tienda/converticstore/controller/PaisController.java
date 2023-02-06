@@ -13,7 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/paises")
-public class PaisRest {
+public class PaisController {
     @Autowired
     private PaisService paisService;
     @GetMapping("/all")

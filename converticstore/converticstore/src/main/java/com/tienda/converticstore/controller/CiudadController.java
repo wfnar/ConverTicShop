@@ -1,4 +1,4 @@
 package com.tienda.converticstore.controller;
 
-public class TipoDocumentoRest {
+public class CiudadController {
 }
