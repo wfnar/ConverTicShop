@@ -1,8 +1,8 @@
 package com.tienda.converticstore.controller;
 
 
-import com.tienda.converticstore.entities.Generos;
-import com.tienda.converticstore.services.GeneroService;
+import com.tienda.converticstore.entities.Categoria;
+import com.tienda.converticstore.services.CategoriaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,17 +13,20 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/generos")
-public class GeneroController {
+@RequestMapping("/catagoria")
+public class CategoriaContreller {
 
     @Autowired
-    private GeneroService generoService;
+    private CategoriaService categoriaService;
+
     @GetMapping("/all")
-    public List<Generos> verGeneros(){
-        return generoService.findAll();
+    public List<Categoria> verCategorias(){
+        return categoriaService.findAll();
     }
+
     @GetMapping("/{id}")
-    public Generos buscarPorId(@PathVariable("id") Integer idGenero){
-        return generoService.findByid(idGenero).orElse(null);
+    public Categoria buscarPorId(@PathVariable("id") Integer idCategoria){
+        return categoriaService.findById(idCategoria).orElse(null);
     }
+
 }

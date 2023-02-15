@@ -19,7 +19,7 @@ public class PaisService{
 
 
     public Optional<Paises> findById(Integer idPais) {
-        return Optional.of(paisRepository.findById(idPais)).orElse(null);
+        return paisRepository.findById(idPais);
     }
 
 

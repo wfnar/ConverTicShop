@@ -15,158 +15,34 @@ import java.util.Optional;
 import java.util.function.Function;
 
 @Service
-public class UsuarioService implements UsuarioRepository{
+public class UsuarioService{
     @Autowired
     private UsuarioRepository usuarioRepository;
 
-
-    @Override
-    public void flush() {
-
-    }
-
-    @Override
-    public <S extends Usuario> S saveAndFlush(S entity) {
-        return null;
-    }
-
-    @Override
-    public <S extends Usuario> List<S> saveAllAndFlush(Iterable<S> entities) {
-        return null;
-    }
-
-    @Override
-    public void deleteAllInBatch(Iterable<Usuario> entities) {
-
-    }
-
-    @Override
-    public void deleteAllByIdInBatch(Iterable<String> strings) {
-
-    }
-
-    @Override
-    public void deleteAllInBatch() {
-
-    }
-
-    @Override
-    public Usuario getOne(String s) {
-        return null;
-    }
-
-    @Override
-    public Usuario getById(String s) {
-        return null;
-    }
-
-    @Override
-    public Usuario getReferenceById(String s) {
-        return null;
-    }
-
-    @Override
-    public <S extends Usuario> Optional<S> findOne(Example<S> example) {
-        return Optional.empty();
-    }
-
-    @Override
-    public <S extends Usuario> List<S> findAll(Example<S> example) {
-        return null;
-    }
-
-    @Override
-    public <S extends Usuario> List<S> findAll(Example<S> example, Sort sort) {
-        return null;
-    }
-
-    @Override
-    public <S extends Usuario> Page<S> findAll(Example<S> example, Pageable pageable) {
-        return null;
-    }
-
-    @Override
-    public <S extends Usuario> long count(Example<S> example) {
-        return 0;
-    }
-
-    @Override
-    public <S extends Usuario> boolean exists(Example<S> example) {
-        return false;
-    }
-
-    @Override
-    public <S extends Usuario, R> R findBy(Example<S> example, Function<FluentQuery.FetchableFluentQuery<S>, R> queryFunction) {
-        return null;
-    }
-
-    @Override
-    public <S extends Usuario> S save(S entity) {
-        return usuarioRepository.save(entity);
-    }
-
-    @Override
-    public <S extends Usuario> List<S> saveAll(Iterable<S> entities) {
-        return null;
-    }
-
-    @Override
-    public Optional<Usuario> findById(String s) {
-        return Optional.empty();
-    }
-
-    @Override
-    public boolean existsById(String s) {
-        return false;
-    }
-
-    @Override
-    public List<Usuario> findAll() {
+    public  List<Usuario> findAll(){
         return usuarioRepository.findAll();
     }
 
-    @Override
-    public List<Usuario> findAllById(Iterable<String> strings) {
-        return null;
+    public Usuario findById(String idUsuario){
+        return usuarioRepository.findById(idUsuario).orElse(null);
     }
 
-    @Override
-    public long count() {
-        return 0;
-    }
 
-    @Override
-    public void deleteById(String s) {
-
-    }
-
-    @Override
-    public void delete(Usuario entity) {
+    public Boolean login(String email, String password){
+        Usuario usuario = usuarioRepository.findByEmailAndPassword(email, password);
+        if (usuario != null){
+            return true;
+        }else{
+            return false;
+        }
 
     }
 
-    @Override
-    public void deleteAllById(Iterable<? extends String> strings) {
 
+    public Usuario save(Usuario usuario){
+        return usuarioRepository.save(usuario);
     }
 
-    @Override
-    public void deleteAll(Iterable<? extends Usuario> entities) {
 
-    }
 
-    @Override
-    public void deleteAll() {
-
-    }
-
-    @Override
-    public List<Usuario> findAll(Sort sort) {
-        return null;
-    }
-
-    @Override
-    public Page<Usuario> findAll(Pageable pageable) {
-        return null;
-    }
 }
