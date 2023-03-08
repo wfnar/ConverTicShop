@@ -34,6 +34,9 @@ public class Producto {
     @Column(name = "numero_busquedas")
     private Integer numeroBusquedas;
 
+    @Column(name = "descripcion")
+    private String description;
+
     @ManyToOne
     @JoinColumn(name = "id_marca", insertable = false, updatable = false)
     private Marcas marca;
@@ -47,7 +50,7 @@ public class Producto {
 
     @ManyToOne
     @JoinColumn(name = "id_color", insertable = false, updatable = false)
-    private Colores colore;
+    private Colores color;
 
     @ManyToOne
     @JoinColumn(name = "id_genero", insertable = false, updatable = false)
@@ -149,12 +152,12 @@ public class Producto {
         this.talla = talla;
     }
 
-    public Colores getColore() {
-        return colore;
+    public Colores getColor() {
+        return color;
     }
 
-    public void setColore(Colores colore) {
-        this.colore = colore;
+    public void setColor(Colores color) {
+        this.color = color;
     }
 
     public Generos getGenero() {
@@ -163,5 +166,13 @@ public class Producto {
 
     public void setGenero(Generos genero) {
         this.genero = genero;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

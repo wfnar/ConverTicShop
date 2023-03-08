@@ -28,14 +28,9 @@ public class UsuarioService{
     }
 
 
-    public Boolean login(String email, String password){
-        Usuario usuario = usuarioRepository.findByEmailAndPassword(email, password);
-        if (usuario != null){
-            return true;
-        }else{
-            return false;
-        }
-
+    public Boolean login(String email, String password) throws ExceptionUser {
+        Usuario usuario = usuarioRepository.findByEmailAndPassword(email, password).orElseThrow(ExceptionUser::new);
+        return usuario != null;
     }
 
 

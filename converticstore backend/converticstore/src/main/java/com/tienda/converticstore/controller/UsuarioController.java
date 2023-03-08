@@ -2,6 +2,7 @@ package com.tienda.converticstore.controller;
 
 import com.tienda.converticstore.entities.Usuario;
 import com.tienda.converticstore.repository.UsuarioRepository;
+import com.tienda.converticstore.services.ExceptionUser;
 import com.tienda.converticstore.services.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -12,6 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/user")
+@CrossOrigin(origins = {"http://localhost:4200/"})
 public class UsuarioController {
     @Autowired
     UsuarioService usuarioService;
@@ -28,13 +30,12 @@ public class UsuarioController {
 
     @PostMapping("/login")
     public ResponseEntity<Boolean>  login(@RequestBody Usuario usuario){
-
-        Boolean loging = usuarioService.login(usuario.getEmail(), usuario.getPassword());
-
-        if (loging == true){
+        try{
+            Boolean loging = usuarioService.login(usuario.getEmail(), usuario.getPassword());
             return new ResponseEntity<>(loging, HttpStatus.OK);
-        }else {
-            return new ResponseEntity<>(loging, HttpStatus.NOT_FOUND);
+        }catch (ExceptionUser eu){
+
+            return new ResponseEntity<>(false, HttpStatus.OK);
         }
 
     }

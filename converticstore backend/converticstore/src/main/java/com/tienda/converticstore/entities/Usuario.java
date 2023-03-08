@@ -10,23 +10,19 @@ public class Usuario {
     @Id
     @Column(name = "id_usuario")
     private String idUsuario;
-    private String nombre;
-    private String apellido;
-    @Column(name = "fecha_nacimiento")
-    private LocalDate fechaNacimiento;
-    @Column(name = "id_tipo_documento")
-    private Integer idTipoDocumento;
+
     @Column(name = "correo_electronico")
     private String email;
     @Column(name = "contrasena")
     private String password;
-    @Column(name = "telefono_contacto")
-    private String telefonoContacto;
     private String direccion;
     @Column(name = "id_ciudad")
     private Integer idCiudad;
-    @Column(name = "id_genero")
-    private Integer idGenero;
+
+    private String nombre;
+    private String apellido;
+    @Column(name = "id_tipo_documento")
+    private Integer idTipoDocumento;
 
     @ManyToOne
     @JoinColumn(name = "id_tipo_documento", insertable = false, updatable = false)
@@ -34,9 +30,6 @@ public class Usuario {
     @ManyToOne
     @JoinColumn(name = "id_ciudad", insertable = false, updatable = false)
     private Ciudades ciudad;
-    @ManyToOne
-    @JoinColumn(name = "id_genero", insertable = false, updatable = false)
-    private Generos genero;
 
     public String getIdUsuario() {
         return idUsuario;
@@ -44,38 +37,6 @@ public class Usuario {
 
     public void setIdUsuario(String idUsuario) {
         this.idUsuario = idUsuario;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public String getApellido() {
-        return apellido;
-    }
-
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
-    }
-
-    public LocalDate getFechaNacimiento() {
-        return fechaNacimiento;
-    }
-
-    public void setFechaNacimiento(LocalDate fechaNacimiento) {
-        this.fechaNacimiento = fechaNacimiento;
-    }
-
-    public Integer getIdTipoDocumento() {
-        return idTipoDocumento;
-    }
-
-    public void setIdTipoDocumento(Integer idTipoDocumento) {
-        this.idTipoDocumento = idTipoDocumento;
     }
 
     public String getEmail() {
@@ -94,14 +55,6 @@ public class Usuario {
         this.password = password;
     }
 
-    public String getTelefonoContacto() {
-        return telefonoContacto;
-    }
-
-    public void setTelefonoContacto(String telefonoContacto) {
-        this.telefonoContacto = telefonoContacto;
-    }
-
     public String getDireccion() {
         return direccion;
     }
@@ -118,12 +71,28 @@ public class Usuario {
         this.idCiudad = idCiudad;
     }
 
-    public Integer getIdGenero() {
-        return idGenero;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setIdGenero(Integer idGenero) {
-        this.idGenero = idGenero;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getApellido() {
+        return apellido;
+    }
+
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
+    }
+
+    public Integer getIdTipoDocumento() {
+        return idTipoDocumento;
+    }
+
+    public void setIdTipoDocumento(Integer idTipoDocumento) {
+        this.idTipoDocumento = idTipoDocumento;
     }
 
     public TipoDocumento getTipoDocumento() {
@@ -140,13 +109,5 @@ public class Usuario {
 
     public void setCiudad(Ciudades ciudad) {
         this.ciudad = ciudad;
-    }
-
-    public Generos getGenero() {
-        return genero;
-    }
-
-    public void setGenero(Generos genero) {
-        this.genero = genero;
     }
 }
